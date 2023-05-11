@@ -1,6 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace Infrastructure;
 
-using Microsoft.EntityFrameworkCore;
 using Domain;
 
 public class WebshopDbContext : DbContext
