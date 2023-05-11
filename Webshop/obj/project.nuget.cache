@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "CBgP+JoHGERYAua5Pj2YVxKWAECpIxuHfb4FEzumpAbZE1ZX3xUoAWx/+pDY7uDBryIqnCFlZxd4HZ4u7M7G7Q==",
+  "dgSpecHash": "26e2wvgPoEBDpU0YBgIU1vLEyvsIfgm92m3fms76CTO28kppL01BNVsh2L5aXxE6le/f/FeuI6dupi/H+To4fQ==",
   "success": true,
   "projectFilePath": "/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/Webshop.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/boris.pouw/.nuget/packages/rabbitmq.client/6.5.0/rabbitmq.client.6.5.0.nupkg.sha512",
+    "/Users/boris.pouw/.nuget/packages/system.memory/4.5.5/system.memory.4.5.5.nupkg.sha512",
+    "/Users/boris.pouw/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,6 +1,6 @@
 ﻿namespace Domain;
 
-public class Name
+public class Product
 {
     public string? Something { get; set; }
 }
