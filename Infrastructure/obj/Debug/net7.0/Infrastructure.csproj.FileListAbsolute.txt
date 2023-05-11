@@ -13,3 +13,5 @@
 /Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/obj/Debug/net7.0/refint/Infrastructure.dll
 /Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/obj/Debug/net7.0/Infrastructure.pdb
 /Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/obj/Debug/net7.0/ref/Infrastructure.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/bin/Debug/net7.0/Domain.Service.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/bin/Debug/net7.0/Domain.Service.pdb
