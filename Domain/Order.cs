@@ -6,4 +6,6 @@ public class Order
     public string OrderId { get; set; }
     public PSP Psp { get; set; }
     public Customer Customer { get; set; }
+    public int CustomerId { get; set; }
+    public ICollection<OrderProduct> OrderProducts { get; set; }
 }

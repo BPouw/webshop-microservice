@@ -6,4 +6,6 @@ public class Customer
     public string Name { get; set; }
     public string Email { get; set; }
     public Address Address { get; set; }
+    public int AddressId { get; set; }
+    public ICollection<Order> Orders { get; set; }
 }
