@@ -18,4 +18,8 @@ WORKDIR /app
 COPY --from=build-env /app/out .
 
 # Expose the port and start the application
+ENV ASPNETCORE_URLS=http://0.0.0.0:8080
+
+EXPOSE 8080
+
 ENTRYPOINT ["dotnet", "Webshop.dll"]
