@@ -24,7 +24,7 @@
     <ItemGroup>
       <Folder Include="Controllers\Queries\" />
       <Folder Include="DTO\" />
-      <Folder Include="RabbitMQ\" />
+      <Folder Include="Queries\" />
     </ItemGroup>
 
 </Project>
