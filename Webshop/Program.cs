@@ -3,6 +3,6 @@ using Domain;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello world");
+app.MapGet("/", () => "Hello World!");
 
 app.Run();

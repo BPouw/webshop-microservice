@@ -1,0 +1,9 @@
+/Users/boris.pouw/Documents/School/WebshopAPI/out/Webshop
+/Users/boris.pouw/Documents/School/WebshopAPI/out/appsettings.Development.json
+/Users/boris.pouw/Documents/School/WebshopAPI/out/appsettings.json
+/Users/boris.pouw/Documents/School/WebshopAPI/out/Webshop.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/out/Webshop.deps.json
+/Users/boris.pouw/Documents/School/WebshopAPI/out/Webshop.runtimeconfig.json
+/Users/boris.pouw/Documents/School/WebshopAPI/out/Webshop.pdb
+/Users/boris.pouw/Documents/School/WebshopAPI/out/Domain.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/out/Domain.pdb
