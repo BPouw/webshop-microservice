@@ -1,9 +1,11 @@
-﻿services:
+﻿version: '3'
+
+services:
   webshop:
-    image: webshop
     build:
       context: .
       dockerfile: Dockerfile
+    image: ${DOCKER_REGISTRY-}webshop
     ports:
       - "8080:8080"
   mysql:
