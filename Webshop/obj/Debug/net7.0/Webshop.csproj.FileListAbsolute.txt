@@ -80,3 +80,16 @@
 /Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/boris.pouw/Documents/School/WebshopAPI/Webshop/obj/Debug/net7.0/Webshop.MvcApplicationPartsAssemblyInfo.cs
+/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/MongoDB.Bson.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/AWSSDK.Core.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/AWSSDK.SecurityToken.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/DnsClient.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/MongoDB.Driver.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/MongoDB.Driver.Core.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/MongoDB.Libmongocrypt.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/SharpCompress.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/Snappier.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/ZstdSharp.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/runtimes/linux/native/libmongocrypt.so
+/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/runtimes/osx/native/libmongocrypt.dylib
+/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/bin/Debug/net7.0/runtimes/win/native/mongocrypt.dll

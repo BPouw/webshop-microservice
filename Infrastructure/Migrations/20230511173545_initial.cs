@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.EntityFrameworkCore.Metadata;
-
+using Infrastructure.MySQL;
 #nullable disable
 
 namespace Infrastructure.Migrations

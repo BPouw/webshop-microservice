@@ -8,4 +8,6 @@ public interface IOrderRepository
     Order GetOrder(Guid orderUuid);
     IEnumerable<Order> GetAllOrders();
     Task DeleteOrder(Order order);
+    Task CreateOrderDocument(OrderDocument orderDocument);
+    Task<OrderDocument?> GetOrderDocument(Guid orderUuid);
 }

@@ -1,5 +1,9 @@
 using Domain;
 using Domain.Service.IRepository;
+using Infrastructure.Mongo;
+using MongoDB.Driver;
+using Infrastructure.MySQL;
+using Microsoft.Extensions.Options;
 
 namespace Infrastructure;
 
@@ -7,10 +11,16 @@ public class OrderRepository : IOrderRepository
 {
 
     private readonly WebshopDbContext _context;
-    
-    public OrderRepository(WebshopDbContext dbContext)
+    private readonly IMongoCollection<OrderDocument> _orderCollection;
+
+    public OrderRepository(WebshopDbContext dbContext, IOptions<WebshopDatabaseSettings> webshopDBSettings)
     {
         this._context = dbContext;
+
+        MongoClient client = new MongoClient(webshopDBSettings.Value.ConnectionString);
+        IMongoDatabase database = client.GetDatabase(webshopDBSettings.Value.DatabaseName);
+
+        _orderCollection = database.GetCollection<OrderDocument>(webshopDBSettings.Value.CollectionName);
     }
     
     public async Task CreateOrder(Order order)
@@ -33,5 +43,15 @@ public class OrderRepository : IOrderRepository
     {
         _context.Order.Remove(order);
         await _context.SaveChangesAsync();
+    }
+
+    public async Task CreateOrderDocument(OrderDocument orderDocument)
+    {
+        await _orderCollection.InsertOneAsync(orderDocument);
+    }
+
+    public async Task<OrderDocument?> GetOrderDocument(Guid orderUuid)
+    {
+        return await _orderCollection.Find(x => x.OrderId == orderUuid).FirstOrDefaultAsync();
     }
 }

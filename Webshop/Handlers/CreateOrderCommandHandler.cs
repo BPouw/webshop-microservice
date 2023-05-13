@@ -1,3 +1,4 @@
+using System.Transactions;
 using Domain;
 using Domain.Service.IRepository;
 using Infrastructure.RabbitMQ;
@@ -28,6 +29,32 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Ord
             // OrderProducts = command.ProductIds
         };
 
+        CustomerDocument customerDocument = new CustomerDocument()
+        {
+            City = "Breda",
+            Country = "Netherlands",
+            Email = "borispouw@hotmail.com",
+            Name = "Boris Pouw",
+            Postalcode = "4814AE",
+            Street = "Tramsingel 93A"
+        };
+
+        ProductDocument productDocument = new ProductDocument()
+        {
+            Name = "Lawn Chair",
+            Description = "Chill in the summer",
+            Price = 10
+        };
+
+        OrderDocument orderDocument = new OrderDocument()
+        {
+            Products = new List<ProductDocument>() { productDocument },
+            Customer = customerDocument,
+            OrderId = order.OrderId,
+            Psp = command.Psp.ToString()
+        };
+
+        await _orderRepository.CreateOrderDocument(orderDocument);
         await _orderRepository.CreateOrder(order);
         _rabbitMqProducer.SendOrderMessage(order);
 

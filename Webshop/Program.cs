@@ -2,19 +2,26 @@ using Domain;
 using Domain.Service.IRepository;
 using Infrastructure;
 using Infrastructure.RabbitMQ;
+using Infrastructure.MySQL;
+using Infrastructure.Mongo;
 using Microsoft.EntityFrameworkCore;
 using Webshop.Commands;
 using Webshop.Handlers;
 using Webshop.Interfaces;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 var dbString = builder.Configuration.GetConnectionString("WebshopDB") ?? throw new InvalidOperationException("Connection string 'WebshopConnection' not found.");
+
 
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<WebshopDbContext>(options =>
     options.UseMySQL(dbString));
+
+builder.Services.Configure<WebshopDatabaseSettings>(
+    builder.Configuration.GetSection("Mongo"));
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IRabbitMQProducer, RabbitMQProducer>();
