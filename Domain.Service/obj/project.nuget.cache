@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "J9/vai2s19c+tuUoHUb04BNl6wEalJ3kokJi54GOZq04HfIOTFfnMj+mybBhhw/VTT+61lXrTnRBIKw3b9FHJw==",
+  "dgSpecHash": "6RJ3opZ5veIBuBoQTwGhcvtF02ObMQp8wD9jKVSwCcC1fZpUD1e5/UzTvFicY/uTsKbD+Uy6wwyC6vY94VJ76A==",
   "success": true,
   "projectFilePath": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/Domain.Service.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/boris.pouw/.nuget/packages/mongodb.bson/2.19.1/mongodb.bson.2.19.1.nupkg.sha512",
+    "/Users/boris.pouw/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

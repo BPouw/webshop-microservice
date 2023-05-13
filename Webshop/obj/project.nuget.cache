@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ibelT5rN2kbs2G9NySjLKmgAl89Bw/5V2tYm9IZfkOIi+SE8zfpuRetEskb4OICLhVj/AAY5EPK4jdA1tuXrgw==",
+  "dgSpecHash": "Kcy8N14L/vd1g6TBJcgJyhgAAc+X1m1lcSiV3OkizecdGWGZ/X60sYnW7Vmg5lBSpMLtWQufAbG3I9eta2+rUg==",
   "success": true,
   "projectFilePath": "/Users/boris.pouw/Documents/School/WebshopAPI/Webshop/Webshop.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,7 @@
     "/Users/boris.pouw/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/microsoft.win32.systemevents/4.7.0/microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "/Users/boris.pouw/.nuget/packages/mongodb.bson/2.19.1/mongodb.bson.2.19.1.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/mysql.data/8.0.33/mysql.data.8.0.33.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/mysql.entityframeworkcore/7.0.2/mysql.entityframeworkcore.7.0.2.nupkg.sha512",

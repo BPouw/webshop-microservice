@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "12HB9Yp2VFvMwclsLij6ouJe0jjNELdcGYHe6HL1BgYaDwzL5y94UNhM9H9MeaAtfEALbOGAgT7I6KYF2KdEIg==",
+  "dgSpecHash": "2AkIE/G/W0+YvGCel1SRVjjUiwbe60E52qRJp//E9Q8XlpyS5sF02M32Ovs1bE8OaYQpdTbB4LVlkZnesEKlOg==",
   "success": true,
   "projectFilePath": "/Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -24,6 +24,7 @@
     "/Users/boris.pouw/.nuget/packages/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/microsoft.win32.systemevents/4.7.0/microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "/Users/boris.pouw/.nuget/packages/mongodb.bson/2.19.1/mongodb.bson.2.19.1.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/mysql.data/8.0.33/mysql.data.8.0.33.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/mysql.entityframeworkcore/7.0.2/mysql.entityframeworkcore.7.0.2.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/portable.bouncycastle/1.9.0/portable.bouncycastle.1.9.0.nupkg.sha512",
