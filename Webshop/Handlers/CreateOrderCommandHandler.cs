@@ -10,13 +10,12 @@ namespace Webshop.Handlers;
 public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Order>
 {
     private readonly IOrderRepository _orderRepository;
-    private IRabbitMQProducer _rabbitMqProducer;
+    private readonly IRabbitMQProducer _rabbitMqProducer;
     
     public CreateOrderCommandHandler(IOrderRepository orderRepository, IRabbitMQProducer rabbitMqProducer)
     {
         this._orderRepository = orderRepository;
         this._rabbitMqProducer = rabbitMqProducer;
-
     }
     
     public async Task<Order> Handle(CreateOrderCommand command, CancellationToken cancellationToken)

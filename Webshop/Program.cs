@@ -6,6 +6,7 @@ using Infrastructure.MySQL;
 using Infrastructure.Mongo;
 using Microsoft.EntityFrameworkCore;
 using Webshop.Commands;
+using Webshop.Consumer;
 using Webshop.Handlers;
 using Webshop.Interfaces;
 
@@ -29,6 +30,7 @@ builder.Services.AddScoped<IRabbitMQProducer, RabbitMQProducer>();
 builder.Services.AddScoped<ICommandHandler<CreateOrderCommand, Order>, CreateOrderCommandHandler>();
 
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddHostedService<RabbitMQConsumer>();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
