@@ -972,7 +972,8 @@
         "dependencies": {
           "Domain": "1.0.0",
           "Domain.Service": "1.0.0",
-          "MySql.EntityFrameworkCore": "7.0.2"
+          "MySql.EntityFrameworkCore": "7.0.2",
+          "RabbitMQ.Client": "6.5.0"
         },
         "compile": {
           "bin/placeholder/Infrastructure.dll": {}

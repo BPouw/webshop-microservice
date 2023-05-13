@@ -1,6 +1,7 @@
 using Domain;
 using Domain.Service.IRepository;
 using Infrastructure;
+using Infrastructure.RabbitMQ;
 using Microsoft.EntityFrameworkCore;
 using Webshop.Commands;
 using Webshop.Handlers;
@@ -16,6 +17,7 @@ builder.Services.AddDbContext<WebshopDbContext>(options =>
     options.UseMySQL(dbString));
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IRabbitMQProducer, RabbitMQProducer>();
 
 builder.Services.AddScoped<ICommandHandler<CreateOrderCommand, Order>, CreateOrderCommandHandler>();
 

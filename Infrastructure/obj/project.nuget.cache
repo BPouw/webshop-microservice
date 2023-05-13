@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "B7hu9wNyNG8PVVmTkpqQ96M+mZFrZPvaXe7HO4KXDh8ECnF56s6tIdxfO84M2soen1WlV76PkT7Jbnj95nsc5A==",
+  "dgSpecHash": "12HB9Yp2VFvMwclsLij6ouJe0jjNELdcGYHe6HL1BgYaDwzL5y94UNhM9H9MeaAtfEALbOGAgT7I6KYF2KdEIg==",
   "success": true,
   "projectFilePath": "/Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -27,11 +27,13 @@
     "/Users/boris.pouw/.nuget/packages/mysql.data/8.0.33/mysql.data.8.0.33.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/mysql.entityframeworkcore/7.0.2/mysql.entityframeworkcore.7.0.2.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/portable.bouncycastle/1.9.0/portable.bouncycastle.1.9.0.nupkg.sha512",
+    "/Users/boris.pouw/.nuget/packages/rabbitmq.client/6.5.0/rabbitmq.client.6.5.0.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/system.configuration.configurationmanager/4.4.1/system.configuration.configurationmanager.4.4.1.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/system.drawing.common/4.7.0/system.drawing.common.4.7.0.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/system.io/4.3.0/system.io.4.3.0.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/system.io.pipelines/6.0.3/system.io.pipelines.6.0.3.nupkg.sha512",
+    "/Users/boris.pouw/.nuget/packages/system.memory/4.5.5/system.memory.4.5.5.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/system.reflection/4.3.0/system.reflection.4.3.0.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/system.reflection.primitives/4.3.0/system.reflection.primitives.4.3.0.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/system.runtime/4.3.0/system.runtime.4.3.0.nupkg.sha512",
@@ -45,6 +47,7 @@
     "/Users/boris.pouw/.nuget/packages/system.text.encoding.codepages/4.4.0/system.text.encoding.codepages.4.4.0.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/system.text.json/7.0.1/system.text.json.7.0.1.nupkg.sha512",
+    "/Users/boris.pouw/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/system.threading.tasks/4.3.0/system.threading.tasks.4.3.0.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/system.windows.extensions/4.7.0/system.windows.extensions.4.7.0.nupkg.sha512"
