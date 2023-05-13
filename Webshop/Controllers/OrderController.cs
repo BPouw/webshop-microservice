@@ -1,6 +1,7 @@
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Webshop.Commands;
+using Webshop.Dto;
 using Webshop.Interfaces;
 
 namespace Webshop.Controllers;
@@ -18,13 +19,13 @@ public class OrderController : ControllerBase
     }
 
     [HttpPost("orders")]
-    public async Task<IActionResult> CreateOrder(Order order)
+    public async Task<IActionResult> CreateOrder(OrderDto order)
     {
         var command = new CreateOrderCommand()
         {
-            CustomerId = order.CustomerId,
-            Psp = order.Psp,
-            OrderProducts = order.OrderProducts
+            CustomerId = order.customer_id,
+            Psp = order.psp,
+            ProductIds = order.product_ids
         };
 
         Order resultOrder = await _createOrderCommandHandler.Handle(command, CancellationToken.None);

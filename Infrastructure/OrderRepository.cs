@@ -19,9 +19,9 @@ public class OrderRepository : IOrderRepository
         await _context.SaveChangesAsync();
     }
 
-    public Order GetOrder(string OrderUuid)
+    public Order GetOrder(Guid orderUuid)
     {
-        return _context.Order.Where(x => x.OrderId == OrderUuid).FirstOrDefault();
+        return _context.Order.Where(x => x.OrderId == orderUuid).FirstOrDefault();
     }
 
     public IEnumerable<Order> GetAllOrders()

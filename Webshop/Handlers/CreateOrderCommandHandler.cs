@@ -7,7 +7,7 @@ namespace Webshop.Handlers;
 
 public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Order>
 {
-    private IOrderRepository _orderRepository;
+    private readonly IOrderRepository _orderRepository;
     
     public CreateOrderCommandHandler(IOrderRepository orderRepository)
     {
@@ -18,9 +18,10 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Ord
     {
         Order order = new Order()
         {
+            OrderId = Guid.NewGuid(),
             CustomerId = command.CustomerId,
             Psp = command.Psp,
-            OrderProducts = command.OrderProducts
+            // OrderProducts = command.ProductIds
         };
 
         await _orderRepository.CreateOrder(order);
