@@ -8,5 +8,4 @@ dockerup:
 entity:
 	dotnet ef database update --project Infrastructure --startup-project Webshop --context WebshopDbContext
 	
-project:
-	rabbit dockerup entity
+project: rabbit dockerup entity
