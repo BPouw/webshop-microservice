@@ -11,9 +11,9 @@ namespace Webshop.Controllers;
 [Route("api/")]
 public class OrderController : ControllerBase
 {
-    private readonly ICommandHandler<CreateOrderCommand, Order> _createOrderCommandHandler;
+    private readonly ICommandHandler<CreateOrderCommand, OrderDto> _createOrderCommandHandler;
 
-    public OrderController(ICommandHandler<CreateOrderCommand, Order> createOrderCommandHandler)
+    public OrderController(ICommandHandler<CreateOrderCommand, OrderDto> createOrderCommandHandler)
     {
         _createOrderCommandHandler = createOrderCommandHandler;
     }
@@ -28,7 +28,7 @@ public class OrderController : ControllerBase
             ProductIds = order.product_ids
         };
 
-        Order resultOrder = await _createOrderCommandHandler.Handle(command, CancellationToken.None);
+        OrderDto resultOrder = await _createOrderCommandHandler.Handle(command, CancellationToken.None);
 
         return Created("Succes", resultOrder);
     }

@@ -1,3 +1,9 @@
+using System.Text.Json;
+using Domain;
+using Domain.Service.IRepository;
+using Infrastructure.RabbitMQ.Messages;
+using MongoDB.Bson;
+
 namespace Webshop.Consumer;
 
 using System;
@@ -10,10 +16,12 @@ using RabbitMQ.Client.Events;
 public class RabbitMQConsumer : BackgroundService
 {
     private readonly IConfiguration _configuration;
+    private readonly IServiceProvider _serviceProvider;
 
-    public RabbitMQConsumer(IConfiguration configuration)
+    public RabbitMQConsumer(IConfiguration configuration, IServiceProvider serviceProvider)
     {
         _configuration = configuration;
+        _serviceProvider = serviceProvider;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -26,7 +34,7 @@ public class RabbitMQConsumer : BackgroundService
         using var connection = factory.CreateConnection();
         using var channel = connection.CreateModel();
 
-        channel.QueueDeclare(queue: "order_notification",
+        channel.QueueDeclare(queue: "order_internal",
             durable: false,
             exclusive: false,
             autoDelete: true,
@@ -37,18 +45,62 @@ public class RabbitMQConsumer : BackgroundService
         {
             var body = ea.Body.ToArray();
             var message = Encoding.UTF8.GetString(body);
+            OrderMessage? orderMessage = JsonSerializer.Deserialize<OrderMessage>(message);
 
             Console.WriteLine($"Received message: {message}");
+            Console.WriteLine($"Received message: {orderMessage.Psp}");
 
-            // Do something with the message here, e.g. deserialize it and process it as needed
+            using (IServiceScope scope = _serviceProvider.CreateScope())
+            {
+                IOrderRepository _orderRepository =
+                    scope.ServiceProvider.GetRequiredService<IOrderRepository>();
+
+                List<ProductDocument> productDocuments = new List<ProductDocument>();
+                
+                foreach (ProductMessage product in orderMessage.Products)
+                {
+                    ProductDocument pd = new ProductDocument()
+                    {
+                        Name = product.Name,
+                        Description = product.Description,
+                        Price = product.Price
+                    };
+                    productDocuments.Add(pd);
+                }
+
+                CustomerDocument cd = new CustomerDocument()
+                {
+                    City = orderMessage.Customer.City,
+                    Country = orderMessage.Customer.Country,
+                    Email = orderMessage.Customer.Email,
+                    Name = orderMessage.Customer.Name,
+                    Postalcode = orderMessage.Customer.Postalcode,
+                    Street = orderMessage.Customer.Street
+                };
+
+                OrderDocument od = new OrderDocument()
+                {
+                    Customer = cd,
+                    Id = new ObjectId().ToString(),
+                    OrderId = orderMessage.OrderUuid,
+                    Psp = orderMessage.Psp,
+                    Products = productDocuments
+                };
+
+                await _orderRepository.CreateOrderDocument(od);
+            }
 
             await Task.Yield();
         };
 
-        channel.BasicConsume(queue: "order_notification",
+        channel.BasicConsume(queue: "order_internal",
             autoAck: true,
             consumer: consumer);
-
-        await Task.CompletedTask;
+        
+        while (!stoppingToken.IsCancellationRequested)
+        {
+            await Task.Delay(1000, stoppingToken); // Wait for new messages
+        }
+        
     }
 }

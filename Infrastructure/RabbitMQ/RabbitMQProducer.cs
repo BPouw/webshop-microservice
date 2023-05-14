@@ -30,9 +30,11 @@ public class RabbitMQProducer : IRabbitMQProducer
 
         channel.QueueDeclare("order_warehouse", exclusive: false);
         channel.QueueDeclare("order_notification", exclusive: false);
+        channel.QueueDeclare("order_internal", exclusive: false);
         
         channel.QueueBind(exchange:"order_exchange", queue:"order_warehouse", routingKey:"order");
         channel.QueueBind(exchange:"order_exchange", queue:"order_notification", routingKey:"order");
+        channel.QueueBind(exchange:"order_exchange", queue:"order_internal", routingKey:"order");
         
         channel.BasicPublish(exchange: "order_exchange", routingKey: "order", body: body);
 

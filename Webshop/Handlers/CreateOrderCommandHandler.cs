@@ -2,61 +2,89 @@ using System.Transactions;
 using Domain;
 using Domain.Service.IRepository;
 using Infrastructure.RabbitMQ;
+using Infrastructure.RabbitMQ.Messages;
 using Webshop.Commands;
+using Webshop.Dto;
 using Webshop.Interfaces;
 
 namespace Webshop.Handlers;
 
-public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Order>
+public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, OrderDto>
 {
     private readonly IOrderRepository _orderRepository;
+    private readonly ICustomerRepository _customerRepository;
     private readonly IRabbitMQProducer _rabbitMqProducer;
+    private readonly IProductRepository _productRepository;
+    private readonly IOrderProductRepository _orderProductRepository;
     
-    public CreateOrderCommandHandler(IOrderRepository orderRepository, IRabbitMQProducer rabbitMqProducer)
+    public CreateOrderCommandHandler(IOrderRepository orderRepository, IRabbitMQProducer rabbitMqProducer, ICustomerRepository customerRepository, IProductRepository productRepository, IOrderProductRepository orderProductRepository)
     {
         this._orderRepository = orderRepository;
         this._rabbitMqProducer = rabbitMqProducer;
+        _customerRepository = customerRepository;
+        _productRepository = productRepository;
+        _orderProductRepository = orderProductRepository;
     }
     
-    public async Task<Order> Handle(CreateOrderCommand command, CancellationToken cancellationToken)
+    public async Task<OrderDto> Handle(CreateOrderCommand command, CancellationToken cancellationToken)
     {
+        List<ProductMessage> products = new List<ProductMessage>();
+        
+        foreach (int productId in command.ProductIds)
+        {
+            Product product = await _productRepository.getProductById(productId);
+            ProductMessage productMessage = new ProductMessage()
+            {
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price
+            };
+            products.Add(productMessage);
+        }
+        
+        Customer customer = await _customerRepository.getCustomerById(command.CustomerId);
+        
+        CustomerMessage customerMessage = new CustomerMessage()
+        {
+            City = customer.Address.City,
+            Country = customer.Address.Country,
+            Email = customer.Email,
+            Name = customer.Name,
+            Postalcode = customer.Address.PostalCode,
+            Street = customer.Address.Street
+        };
+
+        OrderMessage orderMessage = new OrderMessage()
+        {
+            Customer = customerMessage,
+            OrderUuid = Guid.NewGuid().ToString(),
+            Psp = command.Psp.ToString(),
+            Products = products
+        };
+
         Order order = new Order()
         {
-            OrderId = Guid.NewGuid(),
             CustomerId = command.CustomerId,
+            OrderId = Guid.Parse(orderMessage.OrderUuid),
             Psp = command.Psp,
-            // OrderProducts = command.ProductIds
         };
 
-        CustomerDocument customerDocument = new CustomerDocument()
+        int orderId = await _orderRepository.CreateOrder(order);
+
+        foreach (int productId in command.ProductIds)
         {
-            City = "Breda",
-            Country = "Netherlands",
-            Email = "borispouw@hotmail.com",
-            Name = "Boris Pouw",
-            Postalcode = "4814AE",
-            Street = "Tramsingel 93A"
-        };
+            await _orderProductRepository.createOrderProduct(orderId, productId);
+        }
+        
+        _rabbitMqProducer.SendOrderMessage(orderMessage);
 
-        ProductDocument productDocument = new ProductDocument()
+        OrderDto orderDto = new OrderDto()
         {
-            Name = "Lawn Chair",
-            Description = "Chill in the summer",
-            Price = 10
+            customer_id = command.CustomerId,
+            product_ids = command.ProductIds,
+            psp = command.Psp
         };
-
-        OrderDocument orderDocument = new OrderDocument()
-        {
-            Products = new List<ProductDocument>() { productDocument },
-            Customer = customerDocument,
-            OrderId = order.OrderId,
-            Psp = command.Psp.ToString()
-        };
-
-        await _orderRepository.CreateOrderDocument(orderDocument);
-        await _orderRepository.CreateOrder(order);
-        _rabbitMqProducer.SendOrderMessage(order);
-
-        return order;
+        
+        return orderDto;
     }
 }

@@ -23,10 +23,11 @@ public class OrderRepository : IOrderRepository
         _orderCollection = database.GetCollection<OrderDocument>(webshopDBSettings.Value.CollectionName);
     }
     
-    public async Task CreateOrder(Order order)
+    public async Task<int> CreateOrder(Order order)
     {
         _context.Order.Add(order);
         await _context.SaveChangesAsync();
+        return order.ID;
     }
 
     public Order GetOrder(Guid orderUuid)
@@ -50,7 +51,7 @@ public class OrderRepository : IOrderRepository
         await _orderCollection.InsertOneAsync(orderDocument);
     }
 
-    public async Task<OrderDocument?> GetOrderDocument(Guid orderUuid)
+    public async Task<OrderDocument?> GetOrderDocument(string orderUuid)
     {
         return await _orderCollection.Find(x => x.OrderId == orderUuid).FirstOrDefaultAsync();
     }

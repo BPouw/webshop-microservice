@@ -10,7 +10,7 @@ public class OrderDocument
     public string? Id { get; set; }
     
     [BsonElement("order_uuid")]
-    public Guid OrderId { get; set; }
+    public string OrderId { get; set; }
     
     [BsonElement("psp")]
     public string Psp { get; set; }
