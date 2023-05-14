@@ -10,6 +10,7 @@ using Webshop.Consumer;
 using Webshop.Dto;
 using Webshop.Handlers;
 using Webshop.Interfaces;
+using Webshop.Queries;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,6 +32,7 @@ builder.Services.AddScoped<IRabbitMQProducer, RabbitMQProducer>();
 
 //command handler
 builder.Services.AddScoped<ICommandHandler<CreateOrderCommand, OrderDto>, CreateOrderCommandHandler>();
+builder.Services.AddScoped<IQueryHandler<GetOrderQuery, OrderDocument>, GetOrderQueryHandler>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
