@@ -1,0 +1,15 @@
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/bin/Debug/net7.0/Domain.Service.deps.json
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/bin/Debug/net7.0/Domain.Service.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/bin/Debug/net7.0/Domain.Service.pdb
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/bin/Debug/net7.0/Domain.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/bin/Debug/net7.0/Domain.pdb
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/obj/Debug/net7.0/Domain.Service.csproj.AssemblyReference.cache
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/obj/Debug/net7.0/Domain.Service.GeneratedMSBuildEditorConfig.editorconfig
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/obj/Debug/net7.0/Domain.Service.AssemblyInfoInputs.cache
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/obj/Debug/net7.0/Domain.Service.AssemblyInfo.cs
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/obj/Debug/net7.0/Domain.Service.csproj.CoreCompileInputs.cache
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/obj/Debug/net7.0/Domain.Service.csproj.CopyComplete
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/obj/Debug/net7.0/Domain.Service.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/obj/Debug/net7.0/refint/Domain.Service.dll
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/obj/Debug/net7.0/Domain.Service.pdb
+/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/obj/Debug/net7.0/ref/Domain.Service.dll

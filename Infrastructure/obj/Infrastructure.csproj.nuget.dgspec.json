@@ -4,14 +4,71 @@
     "/Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/Infrastructure.csproj": {}
   },
   "projects": {
-    "/Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/Infrastructure.csproj": {
+    "/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/Domain.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/Infrastructure.csproj",
-        "projectName": "Infrastructure",
-        "projectPath": "/Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/Infrastructure.csproj",
+        "projectUniqueName": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/Domain.Service.csproj",
+        "projectName": "Domain.Service",
+        "projectPath": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/Domain.Service.csproj",
         "packagesPath": "/Users/boris.pouw/.nuget/packages/",
-        "outputPath": "/Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/obj/",
+        "outputPath": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/boris.pouw/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/boris.pouw/Documents/School/WebshopAPI/Domain/Domain.csproj": {
+                "projectPath": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain/Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/boris.pouw/Documents/School/WebshopAPI/Domain/Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain/Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain/Domain.csproj",
+        "packagesPath": "/Users/boris.pouw/.nuget/packages/",
+        "outputPath": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/boris.pouw/.nuget/NuGet/NuGet.Config"
@@ -37,6 +94,86 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.19.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/Infrastructure.csproj",
+        "projectName": "Infrastructure",
+        "projectPath": "/Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/Infrastructure.csproj",
+        "packagesPath": "/Users/boris.pouw/.nuget/packages/",
+        "outputPath": "/Users/boris.pouw/Documents/School/WebshopAPI/Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/boris.pouw/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/Domain.Service.csproj": {
+                "projectPath": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain.Service/Domain.Service.csproj"
+              },
+              "/Users/boris.pouw/Documents/School/WebshopAPI/Domain/Domain.csproj": {
+                "projectPath": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain/Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.19.1, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

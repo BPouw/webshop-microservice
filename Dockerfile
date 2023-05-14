@@ -5,7 +5,9 @@ WORKDIR /app
 # Copy the project files and restore any dependencies
 COPY *.sln ./
 COPY Webshop/*.csproj ./Webshop/
+COPY Infrastructure/*.csproj ./Infrastructure/
 COPY Domain/*.csproj ./Domain/
+COPY Domain.Service/*.csproj ./Domain.Service/
 RUN dotnet restore
 
 # Copy the rest of the application code and publish the Webshop project
