@@ -24,4 +24,9 @@ public class ProductRepository : IProductRepository
         _context.Product.Update(product);
         await _context.SaveChangesAsync();
     }
+
+    public async Task<Product> getProductByName(string name)
+    {
+        return await _context.Product.Where(x => x.Name == name).FirstOrDefaultAsync();
+    }
 }
