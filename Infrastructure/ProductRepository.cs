@@ -2,13 +2,13 @@ using Domain;
 using Domain.Service.IRepository;
 using Infrastructure.MySQL;
 using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 
 namespace Infrastructure;
 
 public class ProductRepository : IProductRepository
 {
     private readonly WebshopDbContext _context;
-
     public ProductRepository(WebshopDbContext context)
     {
         _context = context;
@@ -29,4 +29,10 @@ public class ProductRepository : IProductRepository
     {
         return await _context.Product.Where(x => x.Name == name).FirstOrDefaultAsync();
     }
+
+    public async Task<List<Product>> getProducts()
+    {
+        return await _context.Product.ToListAsync();
+    }
+    
 }
