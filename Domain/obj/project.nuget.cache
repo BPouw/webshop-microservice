@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "v95c5ENOuazPKBMnE4dzYd0jWu8hkL7qZGBoC53tZofhbqPcWql85uvuT0tdI/29ITVu4Iui4JnPhmndy4qoXQ==",
+  "dgSpecHash": "8ZINzTuLkjduUWGdxu1LlFltdD9TJJtaLqG8e5TWR5V0maYKzO/p71pHVNhLmmoQ4Gq2DDJY+zJCP4cP68JCBA==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Wessel van Gils\\Documents\\Documents\\Coding\\Webshop\\Domain\\Domain.csproj",
+  "projectFilePath": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain/Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Wessel van Gils\\.nuget\\packages\\mongodb.bson\\2.19.1\\mongodb.bson.2.19.1.nupkg.sha512",
-    "C:\\Users\\Wessel van Gils\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+    "/Users/boris.pouw/.nuget/packages/mongodb.bson/2.19.1/mongodb.bson.2.19.1.nupkg.sha512",
+    "/Users/boris.pouw/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }
