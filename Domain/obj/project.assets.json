@@ -92,19 +92,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Wessel van Gils\\.nuget\\packages\\": {}
+    "/Users/boris.pouw/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Wessel van Gils\\Documents\\Documents\\Coding\\Webshop\\Domain\\Domain.csproj",
+      "projectUniqueName": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain/Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "c:\\Users\\Wessel van Gils\\Documents\\Documents\\Coding\\Webshop\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\Wessel van Gils\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Wessel van Gils\\Documents\\Documents\\Coding\\Webshop\\Domain\\obj\\",
+      "projectPath": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain/Domain.csproj",
+      "packagesPath": "/Users/boris.pouw/.nuget/packages/",
+      "outputPath": "/Users/boris.pouw/Documents/School/WebshopAPI/Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Wessel van Gils\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/boris.pouw/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -149,7 +149,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
       }
     }
   }
