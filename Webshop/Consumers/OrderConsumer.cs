@@ -2,25 +2,21 @@ using System.Text.Json;
 using Domain;
 using Domain.Service.IRepository;
 using Infrastructure.RabbitMQ.Messages;
-using MongoDB.Bson;
 
-namespace Webshop.Consumer;
+namespace Webshop.Consumers;
 
 using System;
 using System.Text;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-public class RabbitMQConsumer : BackgroundService
+public class OrderConsumer : BackgroundService
 {
-    private readonly IConfiguration _configuration;
     private readonly IServiceProvider _serviceProvider;
 
-    public RabbitMQConsumer(IConfiguration configuration, IServiceProvider serviceProvider)
+    public OrderConsumer(IServiceProvider serviceProvider)
     {
-        _configuration = configuration;
         _serviceProvider = serviceProvider;
     }
 

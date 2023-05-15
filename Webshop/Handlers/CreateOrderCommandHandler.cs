@@ -96,7 +96,7 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Ord
                 var ps = new ProductStockMessage()
                 {
                     ProductName = product.Name,
-                    currentStock = product.Stock
+                    CurrentStock = product.Stock
                 };
 
                 _rabbitMqProducer.SendProductStockOrder(ps);
