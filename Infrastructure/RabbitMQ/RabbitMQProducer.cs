@@ -11,7 +11,7 @@ public class RabbitMQProducer : IRabbitMQProducer
     {
         var factory = new ConnectionFactory
         {
-            HostName = "localhost"
+            HostName = "host.docker.internal"
         };
 
         return factory.CreateConnection();
