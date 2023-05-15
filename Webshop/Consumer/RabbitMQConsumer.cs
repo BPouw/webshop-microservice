@@ -81,7 +81,6 @@ public class RabbitMQConsumer : BackgroundService
                 OrderDocument od = new OrderDocument()
                 {
                     Customer = cd,
-                    Id = new ObjectId().ToString(),
                     OrderId = orderMessage.OrderUuid,
                     Psp = orderMessage.Psp,
                     Products = productDocuments

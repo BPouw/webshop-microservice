@@ -18,4 +18,10 @@ public class ProductRepository : IProductRepository
     {
         return await _context.Product.Where(x => x.ID == id).FirstOrDefaultAsync();
     }
+
+    public async Task updateProduct(Product product)
+    {
+        _context.Product.Update(product);
+        await _context.SaveChangesAsync();
+    }
 }
