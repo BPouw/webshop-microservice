@@ -76,7 +76,7 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Ord
             Psp = command.Psp,
         };
 
-        if (!_orderService.isValidOrder(order))
+        if (!_orderService.isValidOrder(order, checkProducts))
         {
             throw new Exception("Too many products in this order");
         }
@@ -98,7 +98,7 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Ord
                     ProductName = product.Name,
                     currentStock = product.Stock
                 };
-                
+
                 _rabbitMqProducer.SendProductStockOrder(ps);
             }
         }

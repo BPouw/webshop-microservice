@@ -4,8 +4,8 @@ namespace Domain.Service.Service;
 
 public class OrderService : IOrderService
 {
-    public bool isValidOrder(Order order)
+    public bool isValidOrder(Order order, List<Product> products)
     {
-        return order.OrderProducts.Count <= 20;
+        return products.Count <= 20;
     }
 }
