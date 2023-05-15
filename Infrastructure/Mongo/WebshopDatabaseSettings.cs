@@ -11,7 +11,7 @@ public class WebshopDatabaseSettings
     
     public WebshopDatabaseSettings()
     {
-        ConnectionString = "mongodb://localhost:27017";
+        ConnectionString = "mongodb://mongodb:27017";
         DatabaseName = "webshop";
         CollectionName = "orders";
     }

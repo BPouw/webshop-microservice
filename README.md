@@ -9,6 +9,8 @@ make project
 
 Creates RabbitMQ, MySQL and API docker image and runs entity DB migration
 
+(you might have to manually start the webapi)
+
 # RabbitMQ Dashboard
 
 http://localhost:15672/#/

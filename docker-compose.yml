@@ -8,6 +8,10 @@ services:
     image: ${DOCKER_REGISTRY-}webshop
     ports:
       - "8080:8080"
+    depends_on:
+      - mysql
+      - mongodb
+      - rabbitmq
   mysql:
     image: mysql:latest
     container_name: mysql
