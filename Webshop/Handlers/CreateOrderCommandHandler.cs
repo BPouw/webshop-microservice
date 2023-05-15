@@ -1,6 +1,7 @@
 using System.Transactions;
 using Domain;
 using Domain.Service.IRepository;
+using Domain.Service.IService;
 using Infrastructure.RabbitMQ;
 using Infrastructure.RabbitMQ.Messages;
 using Webshop.Commands;
@@ -16,19 +17,24 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Ord
     private readonly IRabbitMQProducer _rabbitMqProducer;
     private readonly IProductRepository _productRepository;
     private readonly IOrderProductRepository _orderProductRepository;
+    private readonly IOrderService _orderService;
+    private readonly IProductService _productService;
     
-    public CreateOrderCommandHandler(IOrderRepository orderRepository, IRabbitMQProducer rabbitMqProducer, ICustomerRepository customerRepository, IProductRepository productRepository, IOrderProductRepository orderProductRepository)
+    public CreateOrderCommandHandler(IOrderRepository orderRepository, IRabbitMQProducer rabbitMqProducer, ICustomerRepository customerRepository, IProductRepository productRepository, IOrderProductRepository orderProductRepository, IOrderService orderService, IProductService productService)
     {
         this._orderRepository = orderRepository;
         this._rabbitMqProducer = rabbitMqProducer;
         _customerRepository = customerRepository;
         _productRepository = productRepository;
         _orderProductRepository = orderProductRepository;
+        _orderService = orderService;
+        _productService = productService;
     }
     
     public async Task<OrderDto> Handle(CreateOrderCommand command, CancellationToken cancellationToken)
     {
         List<ProductMessage> products = new List<ProductMessage>();
+        List<Product> checkProducts = new List<Product>();
         
         foreach (int productId in command.ProductIds)
         {
@@ -40,6 +46,7 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Ord
                 Price = product.Price
             };
             products.Add(productMessage);
+            checkProducts.Add(product);
         }
         
         Customer customer = await _customerRepository.getCustomerById(command.CustomerId);
@@ -69,6 +76,33 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Ord
             Psp = command.Psp,
         };
 
+        if (!_orderService.isValidOrder(order))
+        {
+            throw new Exception("Too many products in this order");
+        }
+        
+        foreach (Product product in checkProducts)
+        {
+            product.Stock = _productService.updateStock(product);
+            if (!_productService.hasEnoughStock(product))
+            {
+                throw new Exception("Not enough stock");
+            }
+
+            await _productRepository.updateProduct(product);
+
+            if (_productService.hasToOrderMoreStock(product))
+            {
+                var ps = new ProductStockMessage()
+                {
+                    ProductName = product.Name,
+                    currentStock = product.Stock
+                };
+                
+                _rabbitMqProducer.SendProductStockOrder(ps);
+            }
+        }
+        
         int orderId = await _orderRepository.CreateOrder(order);
 
         foreach (int productId in command.ProductIds)

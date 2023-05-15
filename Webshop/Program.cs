@@ -1,5 +1,7 @@
 using Domain;
 using Domain.Service.IRepository;
+using Domain.Service.IService;
+using Domain.Service.Service;
 using Infrastructure;
 using Infrastructure.RabbitMQ;
 using Infrastructure.MySQL;
@@ -22,6 +24,10 @@ builder.Services.AddDbContext<WebshopDbContext>(options =>
 
 builder.Services.Configure<WebshopDatabaseSettings>(
     builder.Configuration.GetSection("Mongo"));
+
+// service
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 // repository
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();

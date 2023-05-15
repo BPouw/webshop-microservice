@@ -39,4 +39,22 @@ public class RabbitMQProducer : IRabbitMQProducer
         channel.BasicPublish(exchange: "order_exchange", routingKey: "order", body: body);
 
     }
+
+    public void SendProductStockOrder<T>(T message)
+    {
+        var connection = Connect();
+
+        var channel = connection.CreateModel();
+
+        channel.ExchangeDeclare(exchange: "order_exchange", ExchangeType.Topic);
+
+        var json = JsonSerializer.Serialize(message);
+        var body = Encoding.UTF8.GetBytes(json);
+
+        channel.QueueDeclare("product_stock", exclusive: false);
+
+        channel.QueueBind(exchange:"order_exchange", queue:"product_stock", routingKey:"product");
+
+        channel.BasicPublish(exchange: "order_exchange", routingKey: "product", body: body);
+    }
 }
