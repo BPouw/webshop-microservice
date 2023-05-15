@@ -21,7 +21,7 @@ public class StockConsumer : BackgroundService
     {
         var factory = new ConnectionFactory
         {
-            HostName = "host.docker.internal"
+            HostName = "localhost"
         };
 
         using var connection = factory.CreateConnection();
