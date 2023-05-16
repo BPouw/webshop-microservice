@@ -24,7 +24,7 @@ public class OrderConsumer : BackgroundService
     {
         var factory = new ConnectionFactory
         {
-            HostName = "rabbitmq"
+            HostName = "localhost"
         };
 
         using var connection = factory.CreateConnection();

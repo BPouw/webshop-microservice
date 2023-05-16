@@ -30,6 +30,13 @@ public class ProductRepository : IProductRepository
         return await _context.Product.Where(x => x.Name == name).FirstOrDefaultAsync();
     }
 
+    public async Task<int> createProduct(Product product)
+    {
+        _context.Product.Add(product);
+        await _context.SaveChangesAsync();
+        return product.ID;
+    }
+
     public async Task<List<Product>> getProducts()
     {
         return await _context.Product.ToListAsync();

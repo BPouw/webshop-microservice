@@ -38,6 +38,9 @@ builder.Services.AddScoped<IRabbitMQProducer, RabbitMQProducer>();
 
 //command handler
 builder.Services.AddScoped<ICommandHandler<CreateOrderCommand, OrderDto>, CreateOrderCommandHandler>();
+builder.Services.AddScoped<ICommandHandler<CreateProductCommand, ProductDto>, CreateProductCommandHandler>();
+
+// query handler
 builder.Services.AddScoped<IQueryHandler<GetOrderQuery, OrderDocument>, GetOrderQueryHandler>();
 builder.Services.AddScoped<IQueryHandler<GetProductsQuery, List<Product>>, GetProductsQueryHandler>();
 
