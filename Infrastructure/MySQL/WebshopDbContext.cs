@@ -12,6 +12,8 @@ public class WebshopDbContext : DbContext
     public DbSet<Order> Order { get; set; }
     public DbSet<OrderProduct> Order_Product { get; set; }
     public DbSet<Product> Product { get; set; }
+    
+    public DbSet<Merchant> Merchant { get; set; }
 
     public WebshopDbContext(DbContextOptions<WebshopDbContext> contextOptions): base(contextOptions)
     {
@@ -31,6 +33,11 @@ public class WebshopDbContext : DbContext
             .WithMany(c => c.Orders)
             .HasForeignKey(o => o.CustomerId);
 
+        modelBuilder.Entity<Product>()
+            .HasOne(o => o.Merchant)
+            .WithMany(m => m.Products)
+            .HasForeignKey(o => o.MerchantId);
+        
         modelBuilder.Entity<OrderProduct>()
             .HasKey(op => new { op.ProductId, op.OrderId });
 
@@ -80,6 +87,13 @@ public class WebshopDbContext : DbContext
             }
         );
 
+        modelBuilder.Entity<Merchant>().HasData(new Merchant()
+        {
+            ID = 1,
+            Email = "bal@bal.com"
+        });
+            
+
         modelBuilder.Entity<Product>().HasData(
             new Product
             {
@@ -87,7 +101,8 @@ public class WebshopDbContext : DbContext
                 Name = "Product 1",
                 Description = "This is product 1",
                 Price = 10.99m,
-                Stock = 100
+                Stock = 100,
+                MerchantId = 1
             },
             new Product
             {
@@ -95,7 +110,8 @@ public class WebshopDbContext : DbContext
                 Name = "Product 2",
                 Description = "This is product 2",
                 Price = 15.99m,
-                Stock = 50
+                Stock = 50,
+                MerchantId = 1
             },
             new Product
             {
@@ -103,7 +119,8 @@ public class WebshopDbContext : DbContext
                 Name = "Product 3",
                 Description = "This is product 3",
                 Price = 8.99m,
-                Stock = 200
+                Stock = 200,
+                MerchantId = 1
             },
             new Product
             {
@@ -111,7 +128,8 @@ public class WebshopDbContext : DbContext
                 Name = "Product 4",
                 Description = "This is product 4",
                 Price = 20.99m,
-                Stock = 75
+                Stock = 75,
+                MerchantId = 1
             }
         );
 

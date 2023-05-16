@@ -11,12 +11,12 @@ public class RabbitMQProducer : IRabbitMQProducer
     {
         var factory = new ConnectionFactory
         {
-            HostName = "rabbitmq"
+            HostName = "localhost"
         };
 
         return factory.CreateConnection();
     }
-    
+
     public void SendOrderMessage<T>(T message)
     {
         var connection = Connect();
@@ -31,11 +31,11 @@ public class RabbitMQProducer : IRabbitMQProducer
         channel.QueueDeclare("order_warehouse", exclusive: false);
         channel.QueueDeclare("order_notification", exclusive: false);
         channel.QueueDeclare("order_internal", exclusive: false);
-        
-        channel.QueueBind(exchange:"order_exchange", queue:"order_warehouse", routingKey:"order");
-        channel.QueueBind(exchange:"order_exchange", queue:"order_notification", routingKey:"order");
-        channel.QueueBind(exchange:"order_exchange", queue:"order_internal", routingKey:"order");
-        
+
+        channel.QueueBind(exchange: "order_exchange", queue: "order_warehouse", routingKey: "order");
+        channel.QueueBind(exchange: "order_exchange", queue: "order_notification", routingKey: "order");
+        channel.QueueBind(exchange: "order_exchange", queue: "order_internal", routingKey: "order");
+
         channel.BasicPublish(exchange: "order_exchange", routingKey: "order", body: body);
 
     }
@@ -53,8 +53,10 @@ public class RabbitMQProducer : IRabbitMQProducer
 
         channel.QueueDeclare("product_stock", exclusive: false);
 
-        channel.QueueBind(exchange:"order_exchange", queue:"product_stock", routingKey:"product");
+        channel.QueueBind(exchange: "order_exchange", queue: "product_stock", routingKey: "product");
 
         channel.BasicPublish(exchange: "order_exchange", routingKey: "product", body: body);
     }
+    
+
 }
