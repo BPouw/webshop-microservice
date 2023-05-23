@@ -35,10 +35,12 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Ord
     {
         List<ProductMessage> products = new List<ProductMessage>();
         List<Product> checkProducts = new List<Product>();
+        decimal totalPrice = 0;
         
         foreach (int productId in command.ProductIds)
         {
             Product product = await _productRepository.getProductById(productId);
+            totalPrice += product.Price;
             ProductMessage productMessage = new ProductMessage()
             {
                 Name = product.Name,
@@ -111,6 +113,15 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Ord
         }
         
         _rabbitMqProducer.SendOrderMessage(orderMessage);
+
+        PaymentMessage paymentMessage = new PaymentMessage()
+        {
+            Price = totalPrice,
+            PSP = order.Psp.ToString(),
+            OrderId = order.OrderId.ToString()
+        };
+        
+        _rabbitMqProducer.OrderPaid(paymentMessage);
 
         OrderDto orderDto = new OrderDto()
         {
