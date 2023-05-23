@@ -28,9 +28,9 @@ public class RabbitMQProducer : IRabbitMQProducer
         var json = JsonSerializer.Serialize(message);
         var body = Encoding.UTF8.GetBytes(json);
 
-        channel.QueueDeclare("order_warehouse", exclusive: false);
-        channel.QueueDeclare("order_notification", exclusive: false);
-        channel.QueueDeclare("order_internal", exclusive: false);
+        channel.QueueDeclare("order_warehouse", durable: true , autoDelete: false, exclusive: false);
+        channel.QueueDeclare("order_notification", durable: true, autoDelete: false, exclusive: false);
+        channel.QueueDeclare("order_internal", durable: true, autoDelete: false, exclusive: false);
 
         channel.QueueBind(exchange: "order_exchange", queue: "order_warehouse", routingKey: "order");
         channel.QueueBind(exchange: "order_exchange", queue: "order_notification", routingKey: "order");
@@ -51,7 +51,7 @@ public class RabbitMQProducer : IRabbitMQProducer
         var json = JsonSerializer.Serialize(message);
         var body = Encoding.UTF8.GetBytes(json);
 
-        channel.QueueDeclare("product_stock", exclusive: false);
+        channel.QueueDeclare("product_stock", durable: true, autoDelete: false, exclusive: false);
 
         channel.QueueBind(exchange: "order_exchange", queue: "product_stock", routingKey: "product");
 
@@ -69,7 +69,7 @@ public class RabbitMQProducer : IRabbitMQProducer
         var json = JsonSerializer.Serialize(message);
         var body = Encoding.UTF8.GetBytes(json);
 
-        channel.QueueDeclare("payments", exclusive: false);
+        channel.QueueDeclare("payments", durable: true, autoDelete: false, exclusive: false);
 
         channel.QueueBind(exchange: "payment_exchange", queue: "payments", routingKey: "payments");
 

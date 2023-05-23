@@ -31,9 +31,9 @@ public class OrderConsumer : BackgroundService
         using var channel = connection.CreateModel();
 
         channel.QueueDeclare(queue: "order_internal",
-            durable: false,
+            durable: true,
             exclusive: false,
-            autoDelete: true,
+            autoDelete: false,
             arguments: null);
 
         var consumer = new EventingBasicConsumer(channel);
