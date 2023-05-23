@@ -118,9 +118,10 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Ord
         {
             Price = totalPrice,
             PSP = order.Psp.ToString(),
-            OrderId = order.OrderId.ToString()
+            OrderId = order.OrderId.ToString(),
+            Timestamp = DateTime.Now
         };
-        
+
         _rabbitMqProducer.OrderPaid(paymentMessage);
 
         OrderDto orderDto = new OrderDto()
