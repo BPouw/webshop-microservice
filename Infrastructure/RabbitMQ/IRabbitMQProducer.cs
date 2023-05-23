@@ -4,5 +4,6 @@ public interface IRabbitMQProducer
 {
     public void SendOrderMessage<T>(T message);
     public void SendProductStockOrder<T>(T message);
-   
+
+    void OrderPaid<T>(T message);
 }

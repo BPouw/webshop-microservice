@@ -11,7 +11,7 @@ public class RabbitMQProducer : IRabbitMQProducer
     {
         var factory = new ConnectionFactory
         {
-            HostName = "localhost"
+            HostName = "rabbitmq"
         };
 
         return factory.CreateConnection();
@@ -57,6 +57,22 @@ public class RabbitMQProducer : IRabbitMQProducer
 
         channel.BasicPublish(exchange: "order_exchange", routingKey: "product", body: body);
     }
-    
 
+    public void OrderPaid<T>(T message)
+    {
+        var connection = Connect();
+
+        var channel = connection.CreateModel();
+
+        channel.ExchangeDeclare(exchange: "payment_exchange", ExchangeType.Direct);
+
+        var json = JsonSerializer.Serialize(message);
+        var body = Encoding.UTF8.GetBytes(json);
+
+        channel.QueueDeclare("payments", exclusive: false);
+
+        channel.QueueBind(exchange: "payment_exchange", queue: "payments", routingKey: "payments");
+
+        channel.BasicPublish(exchange: "payment_exchange", routingKey: "payments", body: body);
+    }
 }
