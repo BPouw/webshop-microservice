@@ -28,9 +28,9 @@ public class StockConsumer : BackgroundService
         using var channel = connection.CreateModel();
 
         channel.QueueDeclare(queue: "stock_product",
-            durable: false,
+            durable: true,
             exclusive: false,
-            autoDelete: true,
+            autoDelete: false,
             arguments: null);
 
         var consumer = new EventingBasicConsumer(channel);
@@ -45,7 +45,7 @@ public class StockConsumer : BackgroundService
             using (IServiceScope scope = _serviceProvider.CreateScope())
             {
                 IProductRepository _productRepository =
-                    scope.ServiceProvider.GetRequiredService<IProductRepository>();
+                scope.ServiceProvider.GetRequiredService<IProductRepository>();
 
                 Product product = await _productRepository.getProductByName(stockMessage.ProductName);
 

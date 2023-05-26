@@ -23,14 +23,14 @@ public class RabbitMQProducer : IRabbitMQProducer
 
         var channel = connection.CreateModel();
 
-        channel.ExchangeDeclare(exchange: "order_exchange", ExchangeType.Topic);
+        channel.ExchangeDeclare(exchange: "order_exchange", ExchangeType.Topic, durable: true);
 
         var json = JsonSerializer.Serialize(message);
         var body = Encoding.UTF8.GetBytes(json);
 
-        channel.QueueDeclare("order_warehouse", exclusive: false);
-        channel.QueueDeclare("order_notification", exclusive: false);
-        channel.QueueDeclare("order_internal", exclusive: false);
+        channel.QueueDeclare("order_warehouse", exclusive: false, durable: true);
+        channel.QueueDeclare("order_notification", exclusive: false, durable: true);
+        channel.QueueDeclare("order_internal", exclusive: false, durable: true);
 
         channel.QueueBind(exchange: "order_exchange", queue: "order_warehouse", routingKey: "order");
         channel.QueueBind(exchange: "order_exchange", queue: "order_notification", routingKey: "order");
@@ -46,12 +46,12 @@ public class RabbitMQProducer : IRabbitMQProducer
 
         var channel = connection.CreateModel();
 
-        channel.ExchangeDeclare(exchange: "order_exchange", ExchangeType.Topic);
+        channel.ExchangeDeclare(exchange: "order_exchange", ExchangeType.Topic, durable: true);
 
         var json = JsonSerializer.Serialize(message);
         var body = Encoding.UTF8.GetBytes(json);
 
-        channel.QueueDeclare("product_stock", exclusive: false);
+        channel.QueueDeclare("product_stock", exclusive: false, durable: true);
 
         channel.QueueBind(exchange: "order_exchange", queue: "product_stock", routingKey: "product");
 
