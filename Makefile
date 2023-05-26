@@ -1,8 +1,8 @@
 
 dockerup:
-	docker-compose up -d --force-recreate && docker-compose build --force-rm
+	docker compose up
 	
-entity:
-	dotnet ef database update --project Infrastructure --startup-project Webshop --context WebshopDbContext
+dockerbuild:
+	docker compose build
 	
-project: dockerup entity
+project: dockerbuild dockerup
