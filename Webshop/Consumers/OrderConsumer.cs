@@ -31,7 +31,7 @@ public class OrderConsumer : BackgroundService
         using var channel = connection.CreateModel();
 
         channel.QueueDeclare(queue: "order_internal",
-            durable: false,
+            durable: true,
             exclusive: false,
             autoDelete: true,
             arguments: null);
