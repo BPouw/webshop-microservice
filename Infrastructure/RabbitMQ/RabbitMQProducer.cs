@@ -23,13 +23,13 @@ public class RabbitMQProducer : IRabbitMQProducer
 
         var channel = connection.CreateModel();
 
-        channel.ExchangeDeclare(exchange: "order_exchange", ExchangeType.Topic, durable: true);
+        channel.ExchangeDeclare(exchange: "order_exchange", ExchangeType.Topic, durable: true, autoDelete: false);
 
         var json = JsonSerializer.Serialize(message);
         var body = Encoding.UTF8.GetBytes(json);
 
         channel.QueueDeclare("order_warehouse", exclusive: false, durable: true);
-        channel.QueueDeclare("order_notification", exclusive: false, durable: true);
+        channel.QueueDeclare("order_notification", exclusive: false, durable: true, autoDelete: false);
         channel.QueueDeclare("order_internal", exclusive: false, durable: true);
 
         channel.QueueBind(exchange: "order_exchange", queue: "order_warehouse", routingKey: "order");

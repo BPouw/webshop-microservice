@@ -119,6 +119,7 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Ord
             Price = totalPrice,
             PSP = order.Psp.ToString(),
             OrderId = order.OrderId.ToString(),
+            Email = order.Customer.Email,
             Timestamp = DateTime.Now
         };
 
