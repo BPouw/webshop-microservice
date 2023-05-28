@@ -33,7 +33,7 @@ public class OrderConsumer : BackgroundService
         channel.QueueDeclare(queue: "order_internal",
             durable: true,
             exclusive: false,
-            autoDelete: true,
+            autoDelete: false,
             arguments: null);
 
         var consumer = new EventingBasicConsumer(channel);

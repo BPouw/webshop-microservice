@@ -23,14 +23,14 @@ public class RabbitMQProducer : IRabbitMQProducer
 
         var channel = connection.CreateModel();
 
-        channel.ExchangeDeclare(exchange: "order_exchange", ExchangeType.Topic, durable: true, autoDelete: false);
+        channel.ExchangeDeclare(exchange: "order_exchange", ExchangeType.Topic, durable: true);
 
         var json = JsonSerializer.Serialize(message);
         var body = Encoding.UTF8.GetBytes(json);
 
-        channel.QueueDeclare("order_warehouse", exclusive: false, durable: true);
+        channel.QueueDeclare("order_warehouse", exclusive: false, durable: true, autoDelete: false);
         channel.QueueDeclare("order_notification", exclusive: false, durable: true, autoDelete: false);
-        channel.QueueDeclare("order_internal", exclusive: false, durable: true);
+        channel.QueueDeclare("order_internal", exclusive: false, durable: true, autoDelete: false);
 
         channel.QueueBind(exchange: "order_exchange", queue: "order_warehouse", routingKey: "order");
         channel.QueueBind(exchange: "order_exchange", queue: "order_notification", routingKey: "order");
@@ -64,12 +64,12 @@ public class RabbitMQProducer : IRabbitMQProducer
 
         var channel = connection.CreateModel();
 
-        channel.ExchangeDeclare(exchange: "payment_exchange", ExchangeType.Direct);
+        channel.ExchangeDeclare(exchange: "payment_exchange", ExchangeType.Direct, durable: true);
 
         var json = JsonSerializer.Serialize(message);
         var body = Encoding.UTF8.GetBytes(json);
 
-        channel.QueueDeclare("payments", exclusive: false);
+        channel.QueueDeclare("payments", exclusive: false, durable: true, autoDelete: false);
 
         channel.QueueBind(exchange: "payment_exchange", queue: "payments", routingKey: "payments");
 
